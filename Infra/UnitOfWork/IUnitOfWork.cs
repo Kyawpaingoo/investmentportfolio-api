@@ -1,6 +1,10 @@
-﻿namespace Infra.UnitOfWork;
+﻿using Data;
+using Infra.Repository;
 
-public class IUnitOfWork
+namespace Infra.UnitOfWork;
+
+public interface IUnitOfWork
 {
-    
+    IRepository<tbUser> userRepo { get; }
+    IRepository<tbAsset> assetRepo { get; }
 }

@@ -9,5 +9,6 @@ public class InvestmentPortfolioDBContext : DbContext
         
     }
     
-    
+    public virtual DbSet<tbUser> tbUsers { get; set; }
+    public virtual DbSet<tbAsset> tbAssets { get; set; }
 }
