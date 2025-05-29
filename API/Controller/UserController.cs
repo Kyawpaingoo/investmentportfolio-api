@@ -1,6 +1,5 @@
 ﻿using API.Services;
 using Data;
-using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controller;
@@ -17,7 +16,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("upsert")]
-    public async Task<ActionResult<tbUser>> Upsert([FromBody] tbUser user)
+    public async Task<IActionResult> Upsert([FromBody] tbUser user)
     {
         var result = await _iuserService.Upsert(user);
         return Ok(result);

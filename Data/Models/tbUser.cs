@@ -15,4 +15,6 @@ public class tbUser
     public string? Password { get; set; }
     public DateTime? CreatedAt { get; set; }
     public bool? IsDeleted { get; set; }
+    [NotMapped]
+    public string? ReturnMessage { get; set; }
 }

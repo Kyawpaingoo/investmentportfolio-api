@@ -10,6 +10,7 @@ public class UnitOfWork: IUnitOfWork
 
     private IRepository<tbUser> _userRepo;
     private IRepository<tbAsset> _assetRepo;
+    private IRepository<tbRefreshToken> _refreshTokenRepo;
 
     public UnitOfWork(InvestmentPortfolioDBContext ctx)
     {
@@ -42,6 +43,18 @@ public class UnitOfWork: IUnitOfWork
                 _assetRepo = new Repository<tbAsset>(_ctx);
             }
             return _assetRepo;
+        }
+    }
+    
+    public IRepository<tbRefreshToken> refreshTokenRepo
+    {
+        get
+        {
+            if (_refreshTokenRepo == null)
+            {
+                _refreshTokenRepo = new Repository<tbRefreshToken>(_ctx);
+            }
+            return _refreshTokenRepo;
         }
     }
 }
