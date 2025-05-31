@@ -4,6 +4,7 @@ public struct ReturnMessage
 {
     public const string Success = "Success";
     public const string Fail = "Fail";
+    public const string Duplicate = "Duplicated";
 }
 
 public struct LoginMessage

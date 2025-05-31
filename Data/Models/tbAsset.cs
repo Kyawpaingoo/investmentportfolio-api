@@ -7,7 +7,7 @@ namespace Data;
 public class tbAsset
 {
     [Key]
-    public Guid Id { get; set; }
+    public Guid ID { get; set; }
     public string? Name { get; set; }
     public string? Symbol { get; set; }
     public string? Category { get; set; }

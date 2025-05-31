@@ -25,6 +25,12 @@ public class AccountService : IAccountService
 
     public async Task<string> CreateAccount(CreateAccountRequest request)
     {
+        var existedUser = await _uow.userRepo.GetAll().FirstOrDefaultAsync(x => x.Email == request.Email);
+        if (existedUser != null)
+        {
+            return ReturnMessage.Duplicate;
+        }
+        
         tbUser user = new tbUser()
         {
             Id = new Guid(),

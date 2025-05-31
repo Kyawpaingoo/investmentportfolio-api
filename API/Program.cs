@@ -3,6 +3,7 @@ using System.Text;
 using API.Services;
 using API.Services.AccountService;
 using API.Services.AccountService.JWTService;
+using API.Services.AssetService;
 using Data;
 using Infra;
 using Infra.UnitOfWork;
@@ -35,6 +36,9 @@ builder.Services.AddScoped<IUserService>(s => new UserService(
 builder.Services.AddScoped<IAccountService>(s => new AccountService(
     s.GetService<InvestmentPortfolioDBContext>(),
     s.GetService<IJWTAuthService>()
+));
+builder.Services.AddScoped<IAssetService>(s => new AssetService(
+    s.GetService<InvestmentPortfolioDBContext>()
 ));
 
 var key = "my-super-secret-key-kpo-123456-123456!";
@@ -69,6 +73,17 @@ builder.Services.AddResponseCompression(otps =>
         new[] { "application/octet-stream" });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -83,11 +98,7 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseCors(x => x
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .SetIsOriginAllowed(origin => true)
-        .AllowCredentials());
+app.UseCors("AllowReactApp");
 app.UseAuthorization();
 app.MapControllers();
 app.Run();        
