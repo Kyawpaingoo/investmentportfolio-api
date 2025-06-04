@@ -14,6 +14,7 @@ public class tbUser
     public string? Email { get; set; }
     public string? Password { get; set; }
     public DateTime? CreatedAt { get; set; }
+    [Column(TypeName = "timestamp")]
     public bool? IsDeleted { get; set; }
     [NotMapped]
     public string? ReturnMessage { get; set; }

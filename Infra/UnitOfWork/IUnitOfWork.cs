@@ -9,4 +9,5 @@ public interface IUnitOfWork
     IRepository<tbAsset> assetRepo { get; }
     IRepository<tbRefreshToken> refreshTokenRepo { get; }
     IRepository<tbPortfolio> portfolioRepo { get; }
+    IRepository<tbTransaction> transactionRepo { get; }
 }

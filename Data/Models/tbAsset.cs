@@ -12,6 +12,7 @@ public class tbAsset
     public string? Symbol { get; set; }
     public string? Category { get; set; }
     public string? IconURL { get; set; }
+    [Column(TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
     public bool? IsDeleted { get; set; }
 

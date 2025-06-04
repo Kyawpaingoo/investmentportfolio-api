@@ -15,5 +15,5 @@ public class InvestmentPortfolioDBContext : DbContext
     public virtual DbSet<tbAsset> tbAssets { get; set; }
     public virtual DbSet<tbRefreshToken> tbRefreshTokens { get; set; }
     public virtual DbSet<tbPortfolio> tbPortfolios { get; set; }
-
+    public virtual DbSet<tbTransaction> tbTransactions { get; set; }
 }

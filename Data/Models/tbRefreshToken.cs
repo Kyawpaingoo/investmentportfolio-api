@@ -10,7 +10,9 @@ public class tbRefreshToken
     public int ID { get; set; }
     public string AppID { get; set; }
     public string TokenValue { get; set; }
+    [Column(TypeName = "timestamp")]
     public DateTime? ExpirationDate { get; set; }
     public Boolean? Revoked { get; set; }  
+    [Column(TypeName = "timestamp")]
     public DateTime? RevokedDate { get; set; }
 }

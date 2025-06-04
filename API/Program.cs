@@ -4,6 +4,8 @@ using API.Services;
 using API.Services.AccountService;
 using API.Services.AccountService.JWTService;
 using API.Services.AssetService;
+using API.Services.PortfolioService;
+using API.Services.TransactionService;
 using Data;
 using Infra;
 using Infra.UnitOfWork;
@@ -38,6 +40,12 @@ builder.Services.AddScoped<IAccountService>(s => new AccountService(
     s.GetService<IJWTAuthService>()
 ));
 builder.Services.AddScoped<IAssetService>(s => new AssetService(
+    s.GetService<InvestmentPortfolioDBContext>()
+));
+builder.Services.AddScoped<IPortfolioService>(s => new PortfolioService(
+    s.GetService<InvestmentPortfolioDBContext>()
+));
+builder.Services.AddScoped<ITransactionService>(s => new TransactionService(
     s.GetService<InvestmentPortfolioDBContext>()
 ));
 

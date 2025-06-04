@@ -12,10 +12,12 @@ public class tbTransaction
     public Guid PortfolioID { get; set; }
     [ForeignKey("tbAsset")]
     public Guid AssetID { get; set; }
-    public string? Type { get; set; }
+    public string? TransactionType { get; set; }
+    public string? TransactionID { get; set; }
     public string? Currency { get; set; }
     public decimal? Quantity { get; set; }
     public decimal? PricePerUnit { get; set; }
     public decimal? TotalPrice { get; set; }
-    public DateTime? DateTime { get; set; }
+    [Column(TypeName = "timestamp")]
+    public DateTime? AccessTime { get; set; }
 }
